@@ -7,10 +7,14 @@ describe('anagram', function() {
     var array1 = ['stream', 'pigeon', 'maters'];
     var word2 = 'orchestra';
     var array2 = ['cashregister', 'Carthorse', 'radishes'];
+    var word3 = 'anagram';
+    var search3 = 'nagaram';
 
     expect(myCode.anagram(word1, array1)).toEqual([ 'stream', 'maters' ]);
 
     expect(myCode.anagram(word2, array2)).toEqual([ 'Carthorse' ]);
+
+    expect(myCode.anagram(word3, search3)).toEqual([ 'nagaram' ]);
   });
 
 });
