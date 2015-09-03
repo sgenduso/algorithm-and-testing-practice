@@ -4,14 +4,12 @@ function anagram(word, arrayOrWord) {
 
 function arrayFn(word, arrayToSearch) {
   return arrayToSearch.filter(function (arrayWord) {
-    return sortWord(arrayWord) === sortWord(word);
+    return sortWord(arrayWord) === sortWord(word) && arrayWord.toLowerCase() !== word.toLowerCase();
   });
 }
 
-function stringFn(word, wordToSearch, arraytoPopulate) {
-  if (sortWord(wordToSearch) === sortWord(word)) {
-    return [wordToSearch];
-  }
+function stringFn(word, wordToSearch) {
+  return (sortWord(wordToSearch) === sortWord(word) && wordToSearch.toLowerCase() !== word.toLowerCase()) ? [wordToSearch] : [];
 }
 
 function sortWord(word) {
