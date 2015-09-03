@@ -1,31 +1,22 @@
 function anagram(word, arrayOrWord) {
-  var sortedWord = word.toLowerCase().split('').sort().join('');
-  var anagrams = [];
-  if (typeof(arrayOrWord) === 'object') {
-    arrayOrWord.forEach(function (word) {
-      if (word.toLowerCase().split('').sort().join('') === sortedWord) {
-        anagrams.push(word);
-      }
-    });
-
-  } else if(typeof(arrayOrWord) === 'string'){
-    if (arrayOrWord.toLowerCase().split('').sort().join('') === sortedWord) {
-      anagrams.push(arrayOrWord);
-    }
-  }
-  console.log(word);
-  console.log(anagrams);
-  return anagrams;
+  return (typeof(arrayOrWord) === 'object') ? arrayFn(word, arrayOrWord) : stringFn(word, arrayOrWord);
 }
-// 
-// function arrayFn() {
-//
-// }
-//
-// function stringFn() {
-//
-// }
 
+function arrayFn(word, arrayToSearch) {
+  return arrayToSearch.filter(function (arrayWord) {
+    return sortWord(arrayWord) === sortWord(word);
+  });
+}
+
+function stringFn(word, wordToSearch, arraytoPopulate) {
+  if (sortWord(wordToSearch) === sortWord(word)) {
+    return [wordToSearch];
+  }
+}
+
+function sortWord(word) {
+  return word.toLowerCase().split('').sort().join('');
+}
 
 module.exports = {
   anagram: anagram
