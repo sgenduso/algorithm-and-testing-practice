@@ -1,7 +1,7 @@
-function secondPrime(number){
+function findNthPrime(number, n){
   if (number > 0) {
     var counter = 0;
-    while (counter < 2) {
+    while (counter < n) {
       number++;
       if (isPrime(number)) {
         counter ++;
@@ -11,21 +11,27 @@ function secondPrime(number){
   }
 }
 
-
 function isPrime(number){
-  if (number > 2) {
-    for (var i=2; i < number; i++) {
-      if (number % i === 0) {
-        return false;
-      }
-    } return true;
-  } else if (number > 0){
-    return true;
-  } else {
-    return 'cannot check negative numbers';
-  }
+  return (number < 0 || (isEven(number) && number !==2))
+    ? false
+    : (number < 4)
+    ? true
+    : checkPrimeAboveThree(number);
+}
+
+function checkPrimeAboveThree(number){
+  for (var i=2; i < Math.floor(number/2); i++) {
+    if (number % i === 0) {
+      return false;
+    }
+  } return true;
+}
+
+function isEven(number) {
+  return (number % 2 === 0);
 }
 
 module.exports = {
-  secondPrime: secondPrime
+  findNthPrime: findNthPrime,
+  isPrime: isPrime
 };
