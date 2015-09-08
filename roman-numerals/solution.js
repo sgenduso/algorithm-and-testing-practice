@@ -10,21 +10,19 @@ var romanNumerals = {
 
 function convert(romanNumeral){
   var decimalValue = 0;
-  var numerals = romanNumeral.split('');
-  numerals = numerals.map(function (numeral) {
+  var numerals = romanNumeral.split('').map(function (numeral) {
     return romanNumerals[numeral];
   });
-  var counter = 0;
-  while (counter < numerals.length) {
-    if (numerals[counter+1] > numerals[counter]) {
-      decimalValue += (numerals[counter+1] - numerals[counter]);
-      counter += 2;
+  var i = 0;
+  while (i < numerals.length) {
+    if (numerals[i+1] > numerals[i]) {
+      decimalValue += (numerals[i+1] - numerals[i]);
+      i += 2;
     } else {
-      decimalValue += numerals[counter];
-      counter ++;
+      decimalValue += numerals[i];
+      i ++;
     }
   }
-  console.log(decimalValue);
   return decimalValue;
 }
 

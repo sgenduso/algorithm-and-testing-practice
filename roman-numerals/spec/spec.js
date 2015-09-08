@@ -7,6 +7,7 @@ describe('convert', function() {
     expect(myCode.convert('IX')).toEqual(9);
     expect(myCode.convert('LX')).toEqual(60);
     expect(myCode.convert('MMXV')).toEqual(2015);
+    expect(myCode.convert('MCDXCIX')).toEqual(1499);
 
 });
 
