@@ -26,6 +26,26 @@ function convert(romanNumeral){
   return decimalValue;
 }
 
+function convertRecursively(romanNumeral){
+  var decimalValue = 0;
+  var numerals = romanNumeral.split('').map(function (numeral) {
+    return romanNumerals[numeral];
+  });
+  return addRecursively(numerals);
+}
+
+function addRecursively(array){
+  if (array.length === 0) {
+    return 0;
+  } else if (array[1] > array[0]){
+    var spliced = array.splice(0,2);
+    return (spliced[1] - spliced[0]) + addRecursively(array);
+  } else {
+    return array.splice(0,1)[0] + addRecursively(array);
+  }
+}
+
 module.exports = {
-  convert: convert
+  convert: convert,
+  convertRecursively: convertRecursively
 };

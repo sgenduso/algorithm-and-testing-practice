@@ -12,3 +12,16 @@ describe('convert', function() {
 });
 
 });
+
+describe('convertRecursively', function() {
+
+  it('takes a roman numeral and returns a decimal value', function() {
+
+    expect(myCode.convertRecursively('IX')).toEqual(9);
+    expect(myCode.convertRecursively('LX')).toEqual(60);
+    expect(myCode.convertRecursively('MMXV')).toEqual(2015);
+    expect(myCode.convertRecursively('MCDXCIX')).toEqual(1499);
+
+});
+
+});
