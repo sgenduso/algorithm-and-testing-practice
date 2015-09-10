@@ -1,4 +1,3 @@
-
 module.exports = {
   twoByTwoIdentityMatrix: function() {
     return [
@@ -8,53 +7,45 @@ module.exports = {
   },
 
   identityMatrix: function(n) {
-    var container = [];
+    var matrix = [];
     for (var i = 0; i < n; i++) {
-      var row = [];
+      matrix[i] = [];
       for (var j = 0; j < n; j++) {
-        if (i === j) {
-          row.push(1);
-        } else {
-          row.push(0);
+        matrix[i][j] = (i === j) ? 1 : 0;
         }
       }
-      container.push(row);
-    }
-      return container;
+      return matrix;
   },
 
   matrixAddition: function (a, b) {
-    var addedResult = [];
+    var addedMatrix = [];
     for (var i = 0; i < a[0].length; i++) {
-      var row = [];
+      addedMatrix[i] = [];
       for (var j = 0; j < a[0].length; j++) {
-        row.push(a[i][j] + b[i][j]);
+        addedMatrix[i][j] = a[i][j] + b[i][j];
       }
-      addedResult.push(row);
     }
-      return addedResult;
+      return addedMatrix;
   },
 
   matrixSubtraction: function (a, b) {
-    var subtractedResult = [];
+    var subtractedMatrix = [];
     for (var i = 0; i < a[0].length; i++) {
-      var row = [];
+      subtractedMatrix[i] = [];
       for (var j = 0; j < a[0].length; j++) {
-        row.push(a[i][j] - b[i][j]);
+        subtractedMatrix[i][j] = a[i][j] - b[i][j];
       }
-      subtractedResult.push(row);
     }
-      return subtractedResult;
+      return subtractedMatrix;
   },
 
   matrixConstantMultiplication: function (constant, matrix) {
     var multipliedResult = [];
     for (var i = 0; i < matrix[0].length; i++) {
-      var row = [];
+      multipliedResult[i] = [];
       for (var j = 0; j < matrix[0].length; j++) {
-        row.push(matrix[i][j] * constant);
+        multipliedResult[i][j] = matrix[i][j] * constant;
       }
-      multipliedResult.push(row);
     }
     return multipliedResult;
   }
