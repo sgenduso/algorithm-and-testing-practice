@@ -18,36 +18,32 @@ module.exports = {
   },
 
   matrixAddition: function (a, b) {
-    var addedMatrix = [];
-    for (var i = 0; i < a[0].length; i++) {
-      addedMatrix[i] = [];
-      for (var j = 0; j < a[0].length; j++) {
-        addedMatrix[i][j] = a[i][j] + b[i][j];
-      }
-    }
-      return addedMatrix;
+    return this.addOrSubtract('add', a, b);
   },
 
   matrixSubtraction: function (a, b) {
-    var subtractedMatrix = [];
-    for (var i = 0; i < a[0].length; i++) {
-      subtractedMatrix[i] = [];
-      for (var j = 0; j < a[0].length; j++) {
-        subtractedMatrix[i][j] = a[i][j] - b[i][j];
-      }
-    }
-      return subtractedMatrix;
+    return this.addOrSubtract('subtract', a, b);
   },
 
-  matrixConstantMultiplication: function (constant, matrix) {
-    var multipliedResult = [];
-    for (var i = 0; i < matrix[0].length; i++) {
-      multipliedResult[i] = [];
-      for (var j = 0; j < matrix[0].length; j++) {
-        multipliedResult[i][j] = matrix[i][j] * constant;
+  matrixConstantMultiplication: function (multiplier, matrix) {
+    return this.addOrSubtract(multiplier, matrix);
+  },
+
+  addOrSubtract: function (operation, matrix1, matrix2) {
+    var mathedMatrix = [];
+    for (var i = 0; i < matrix1[0].length; i++) {
+      mathedMatrix[i] = [];
+      for (var j = 0; j < matrix1[0].length; j++) {
+        if (operation === 'add') {
+          mathedMatrix[i][j] = matrix1[i][j] + matrix2[i][j];
+        } else if (operation === 'subtract') {
+          mathedMatrix[i][j] = matrix1[i][j] - matrix2[i][j];
+        } else {
+          mathedMatrix[i][j] = matrix1[i][j] * operation;
+        }
       }
     }
-    return multipliedResult;
+      return mathedMatrix;
   }
 
 };
